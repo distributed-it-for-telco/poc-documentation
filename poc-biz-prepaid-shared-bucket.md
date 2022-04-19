@@ -32,9 +32,13 @@
 
   - service oriented (exposes REST APIs)
 
-    - actor `ServiceAuthorizer`
-      - provisionService(`Service`, `CustomerGroup`, bucket_limit) : void _> used by service vendor_
-      - authorize(`Service`, `Customer`, bucket_decrement) : access_key _> used by customer_
+    - actor `ServicePlanProvisioner` _used by service vendor_
+      - provisionServicePlan(`ServicePlan`) : void
+      - `ServicePlan` = [`Service`, `CustomerGroup`, bucket_limit]
+
+    - actor `UsageAuthorizer` _used by customer_
+      - authorize(`ServiceUsage`) : access_key
+      - `ServiceUsage` = [`Service`, `Customer`, `CustomerGroup`, bucket_decrement]
 
   - resource oriented _(kind of)_
 
