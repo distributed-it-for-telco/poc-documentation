@@ -36,7 +36,7 @@
       - provisionServicePlan(`ServicePlan`) : void
       - `ServicePlan` = [`Service`, `CustomerGroup`, bucket_limit]
 
-    - actor `UsageAuthorizer` _used by customer_
+    - actor `ServiceUsageAuthorizer` _used by customer_
       - authorize(`ServiceUsage`) : access_key
       - `ServiceUsage` = [`Service`, `Customer`, `CustomerGroup`, bucket_decrement]
 
