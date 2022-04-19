@@ -59,3 +59,6 @@
 
 - actor design?
   - service oriented vs. resource oriented (as in REST)
+
+- capability providers
+  - purely technical, no business?
