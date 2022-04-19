@@ -32,20 +32,20 @@
   - service oriented
 
     - `ServiceAuthorizer`
-      - provisionService( `Service`, `CustomerGroup`, bucket_limit )
-      - authorize( `Service`, `Customer`, bucket_decrement )
+      - provisionService(`Service`, `CustomerGroup`, bucket_limit)
+      - authorize(`Service`, `Customer`, bucket_decrement)
 
   - resource oriented _(kind of)_
 
     - `CustomerGroups`
-      - findCustomer( `Customer` )
-      - create( )
-      - _instance_.addCustomer( `Customer` )
+      - findCustomer(`Customer`)
+      - create()
+      - _instance_.addCustomer(`Customer`)
 
     - `ServiceBuckets`
-      - create( bucket_limit )
-      - _instance_.consume( bucket_decrement )
-      - _instance_.IsEmpty( )
+      - create(bucket_limit)
+      - _instance_.consume(bucket_decrement)
+      - _instance_.IsEmpty()
 
 ## design choices and decisions
 
