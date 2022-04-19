@@ -23,29 +23,30 @@
 
 - system actors _(not wasmCloud actors)_
   - Customer
-  - Customer Devices
+  - Customer Device
   - Customer Group (ie. share the same pre-paid service)
-  - Service provider
+  - Service provider (VOD service) 
   - Service vendor
 
 - wamCloud actors
-  - service oriented
 
-    - `ServiceAuthorizer`
-      - provisionService(`Service`, `CustomerGroup`, bucket_limit)
-      - authorize(`Service`, `Customer`, bucket_decrement)
+  - service oriented (exposes REST APIs)
+
+    - actor `ServiceAuthorizer`
+      - provisionService(`Service`, `CustomerGroup`, bucket_limit) : void _> used by service vendor_
+      - authorize(`Service`, `Customer`, bucket_decrement) : access_key _> used by customer_
 
   - resource oriented _(kind of)_
 
-    - `CustomerGroups`
-      - findCustomer(`Customer`)
-      - create()
-      - _instance_.addCustomer(`Customer`)
+    - actor `CustomerGroups`
+      - findCustomer(`Customer`) : `CustomerGroup`
+      - create() : `CustomerGroup`
+      - addCustomer(`CustomerGroup`, `Customer`) : void
 
-    - `ServiceBuckets`
-      - create(bucket_limit)
-      - _instance_.consume(bucket_decrement)
-      - _instance_.IsEmpty()
+    - actor `ServiceBuckets`
+      - create(bucket_limit) : `ServiceBucket`
+      - consume(`ServiceBucket`, bucket_decrement) : void
+      - isEmpty() : boolean
 
 ## design choices and decisions
 
@@ -54,6 +55,8 @@
   - what characteristics (CAP theorem, eventual consistency, network partition tolerance...)
 
 - identity provider: KeyCloak (as IDP and AS)
+
+- Architectural Design,  [@google.docs](https://docs.google.com/document/d/1JHDyaO7ADll3XT4_SpXqbtzFyrjXTKAqbfI1LwtlQ6E/edit#)
 
 ## difficulties & interrogations
 
