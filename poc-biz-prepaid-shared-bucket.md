@@ -21,14 +21,21 @@
 
 ## system design
 
-- system actors _(not wasmCloud actors)_
+- system entities
   - Customer
-  - Customer Device
-  - Customer Group (ie. share the same pre-paid service)
-  - Service provider (VOD service) 
-  - Service vendor
+  - CustomerGroup (customer from the same customer group share the same service)
+  - ServiceProvider (manages the technical service) (NOT IMPLEMENTED)
+  - ServiceVendor (sells the commercial offer)
 
-- wamCloud actors
+- wamCloud
+  - actors
+    - shared-bucket-api: expose REST APIs to the outside world
+    - customers: manages customers and customer-groups
+    - service-vendors (not implemented)
+  - interfaces
+    - shared-bucket: actor to actor interfaces
+
+---
 
   - service oriented (exposes REST APIs)
 
